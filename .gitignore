@@ -1,6 +1,6 @@
-# IDE
-.idea
+# Output
+*.o
+*.out
 
-# CMake
-cmake-build-debug
-
+# Build
+build/

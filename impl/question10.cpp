@@ -1,48 +1,42 @@
 #include <iostream>
-#include <chrono>
-#include "question10.h"
+#include <vector>
+using namespace std;
 
-void ulamAlgorithm(unsigned int a) {
-    int x = a;
-    // while the three last values from x are not 4, 2, 1 do
+int main()
+{
+    int a;
+    cout << "a: ";
+    cin >> a;
 
-}
+    // Vetor para armazenar os valores gerados pelo algoritmo
+    // Com ele podemos verificar se a sequência 4, 2, 1 foi gerada
+    vector<int> seq;
+    seq.push_back(a);
 
-void runExhaustiveTest() {
-    auto start = std::chrono::steady_clock::now();
+    // Roda enquanto os três últimos valores não forem 4, 2, 1.
+    while (seq.size() < 3 || !(seq[seq.size() - 3] == 4 && seq[seq.size() - 2] == 2 && seq[seq.size() - 1] == 1))
+    {
+        int x = seq.back(); // Valor atual
 
-    std::cout << "Running exhaustive test..." << std::endl;
-
-    int largestSequenceSize = 0;
-    unsigned short valueWithLargest = 0;
-    long long sumLengths = 0;
-
-    for (unsigned short i = 1; i <= 65535; i++) {
-        int length = computeSequenceLength(i);
-        sumLengths += length;
-        if (length > largestSequenceSize) {
-            largestSequenceSize = length;
-            valueWithLargest = i;
+        // Se x for par, divide por 2; se for ímpar, aplica 3x+1
+        if (x % 2 == 0)
+        {
+            x = x / 2;
+        }
+        else
+        {
+            x = 3 * x + 1;
         }
 
-        std::cout << "Value: " << i << ", Length: " << length << std::endl;
+        seq.push_back(x); // Armazena o novo valor na sequência
     }
 
-    std::cout << "Exhaustive test completed." << std::endl;
+    cout << "Sequência gerada: ";
+    for (int num : seq)
+    {
+        cout << num << " ";
+    }
+    cout << endl;
 
-    double avgLength = static_cast<double>(sumLengths) / 65535.0;
-
-    std::cout << "Largest sequence size: " << largestSequenceSize << std::endl;
-    std::cout << "Value with largest sequence: " << valueWithLargest << std::endl;
-    std::cout << "Average size: " << avgLength << std::endl;
-    
-    auto end = std::chrono::steady_clock::now();
-    auto elapsedMs = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
-
-    std::cout << "Execution time (ms): " << elapsedMs << std::endl;
-}
-
-int main() {
-    runExhaustiveTest();
     return 0;
 }
