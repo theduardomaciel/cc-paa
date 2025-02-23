@@ -8,6 +8,10 @@
 
 Neste repositório, você encontrará as implementações dos algoritmos desenvolvidos para a conclusão de determinadas questões da Lista de Exercício da disciplina **Projeto e Análise de Algoritmos** na **Universidade Federal de Alagoas** (UFAL), para consolidar conceitos teóricos ou provar certas conjecturas por meio de implementações práticas.
 
+```
+sudo apt install gnuplot
+```
+
 ## 📝 Licença
 
 Este projeto utiliza a MIT License. Veja o arquivo de [LICENÇA](LICENSE) para mais detalhes.
