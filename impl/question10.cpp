@@ -2,22 +2,16 @@
 #include <chrono>
 #include "question10.h"
 
-static int computeSequenceLength(unsigned short a) {
-    unsigned long x = a;
-    int length = 1;
-    while (x != 1) {
-        if (x % 2 == 0) {
-            x /= 2;
-        } else {
-            x = 3 * x + 1;
-        }
-        length++;
-    }
-    return length;
+void ulamAlgorithm(unsigned int a) {
+    int x = a;
+    // while the three last values from x are not 4, 2, 1 do
+
 }
 
 void runExhaustiveTest() {
     auto start = std::chrono::steady_clock::now();
+
+    std::cout << "Running exhaustive test..." << std::endl;
 
     int largestSequenceSize = 0;
     unsigned short valueWithLargest = 0;
@@ -30,15 +24,21 @@ void runExhaustiveTest() {
             largestSequenceSize = length;
             valueWithLargest = i;
         }
-    }
-    double avgLength = static_cast<double>(sumLengths) / 65535.0;
 
-    auto end = std::chrono::steady_clock::now();
-    auto elapsedMs = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+        std::cout << "Value: " << i << ", Length: " << length << std::endl;
+    }
+
+    std::cout << "Exhaustive test completed." << std::endl;
+
+    double avgLength = static_cast<double>(sumLengths) / 65535.0;
 
     std::cout << "Largest sequence size: " << largestSequenceSize << std::endl;
     std::cout << "Value with largest sequence: " << valueWithLargest << std::endl;
     std::cout << "Average size: " << avgLength << std::endl;
+    
+    auto end = std::chrono::steady_clock::now();
+    auto elapsedMs = std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+
     std::cout << "Execution time (ms): " << elapsedMs << std::endl;
 }
 
