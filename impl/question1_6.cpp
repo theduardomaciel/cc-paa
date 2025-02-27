@@ -36,17 +36,25 @@ void printRuler(int n)
     {
         return;
     }
-    printRuler(n - 1);              // imprime a régua de ordem n-1
-    cout << ". ";                   // imprime o ponto que antecede as réguas
-    cout << string(n, '-') << endl; // imprime o traço do meio
-    printRuler(n - 1);              // imprime a régua de ordem n-1
+    printRuler(n - 1); // imprime a régua de ordem n-1
+
+    cout << ". "; // imprime o ponto que antecede as réguas
+    for (int i = 0; i < n; i++)
+    {
+        cout << "-";
+    }
+    cout << endl;
+    /* cout << string(n, '-') << endl; // imprime o traço do meio */
+
+    printRuler(n - 1); // imprime a régua de ordem n-1
 }
 
 int main()
 {
-    cout << "Régua de tamanho 4" << endl;
+    int n = 2;
+    cout << "Régua de tamanho " << n << endl;
     cout << "." << endl;
-    printRuler(4);
+    printRuler(n);
     cout << "." << endl;
     return 0;
 }

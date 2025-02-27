@@ -91,18 +91,16 @@ int main()
 
     cout << "Iterativo: n = " << n_iterative.size() << " valores avaliados." << endl;
 
-    // Plotando os resultados
-    matplot::figure();
-    matplot::plot(n_recursive, t_recursive, "r-");
-    matplot::xlabel("n");
-    matplot::ylabel("Tempo (s)");
-    matplot::title("Fibonacci Recursivo");
+    // Plotando os resultados em um único gráfico
+    auto ax = matplot::gca(); // Pega o eixo atual
+    matplot::plot(ax, n_recursive, t_recursive, "r-", "LineWidth", 2, "DisplayName", "Recursivo");
+    matplot::hold(ax, true); // Mantém o gráfico atual para adicionar o próximo plot
+    matplot::plot(ax, n_iterative, t_iterative, "b-", "LineWidth", 2, "DisplayName", "Iterativo");
 
-    matplot::figure();
-    matplot::plot(n_iterative, t_iterative, "b-");
-    matplot::xlabel("n");
-    matplot::ylabel("Tempo (s)");
-    matplot::title("Fibonacci Iterativo");
+    matplot::xlabel(ax, "n");
+    matplot::ylabel(ax, "Tempo (s)");
+    matplot::title(ax, "Benchmark Fibonacci: Recursivo vs Iterativo");
+    matplot::legend(ax); // Exibe a legenda para diferenciar as curvas
 
     matplot::show();
 
