@@ -47,10 +47,6 @@ int getUlamAlgorithmSequenceLength(unsigned short start)
 
 int main()
 {
-    // Armazenamento dos dados para o relatório final
-    // - o maior tamanho da sequência,
-    // - o valor que gerou essa sequência
-    // - e o total dos tamanhos.
     int maxLength = 0;
     unsigned short valueWithMaxLength = 0;
     unsigned long long totalLength = 0;
