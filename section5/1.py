@@ -2,7 +2,7 @@ import math
 
 """ 
 QUESTÃO 1:
-Inteiros positivos são arranjados em um triângulo equilátero com n números em sua base, como o mostrado na figura abaixo para $n = 4.$ 
+Inteiros positivos são arranjados em um triângulo equilátero com n números em sua base, como o mostrado na figura abaixo para $$n = 4.$$ 
 
 # Exemplo:
 #     2
@@ -22,7 +22,7 @@ Projete um algoritmo de programação dinâmica para este problema.
 # Então, basicamente, i = linha, j = coluna.
 # Para resolver isso, podemos usar programação dinâmica.
 
-# 1. Caracterizar a Sub-estrutura ótima:
+# 1. Caracterizar a sub-estrutura ótima:
 # A soma mínima do caminho até a linha i e coluna j é igual à soma mínima do caminho até
 # a linha i-1 e coluna j ou coluna j-1, mais o valor na posição (i, j).
 

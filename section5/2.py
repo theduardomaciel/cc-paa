@@ -1,7 +1,7 @@
 """
 QUESTÃO 2:
 
-Algumas moedas são espalhadas nas células de um tabuleiro $n \times m$, uma moeda por célula.
+Algumas moedas são espalhadas nas células de um tabuleiro $$n \times m$$, uma moeda por célula.
 Um robô, localizado na célula superior esquerda do tabuleiro, precisa coletar o máximo de moedas possível e trazê-las para a célula inferior direita.
 Em cada etapa, o robô pode mover uma célula para a direita ou uma célula para baixo de sua localização atual.
 Quando o robô visita uma célula com uma moeda, ele pega amoeda.

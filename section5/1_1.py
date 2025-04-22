@@ -1,6 +1,6 @@
 """
 QUESTÃO 1:
-Inteiros positivos são arranjados em um triângulo equilátero com n números em sua base, como o mostrado na figura abaixo para $n = 4.$
+Inteiros positivos são arranjados em um triângulo equilátero com n números em sua base, como o mostrado na figura abaixo para $$n = 4.$$
 
 # Exemplo:
 #     2
