@@ -69,7 +69,7 @@ def minimum_path_sum(triangle):
     for i in range(1, n):
         # Para cada linha, percorremos as colunas
         # A linha i tem i + 1 elementos (de 0 a i)
-        for j in range(i):
+        for j in range(i + 1):
             # Verificamos o elemento à esquerda superior (se existir)
             if j > 0:
                 dp[i][j] = min(dp[i][j], dp[i - 1][j - 1] + triangle[i][j])
