@@ -1,15 +1,25 @@
 import math
 
-# Precisamos encontrar o caminho de soma mínima do topo até a base do triângulo.
-# Só podemos descer para números adjacentes na linha abaixo.
-# Em cada nível i, um número na posição j pode descer para o número na posição j ou j+1 na linha i+1.
-# Então, basicamente, i = linha, j = coluna.
+""" 
+QUESTÃO 1:
+Inteiros positivos são arranjados em um triângulo equilátero com n números em sua base, como o mostrado na figura abaixo para $n = 4.$ 
+
 # Exemplo:
 #     2
 #    5 4
 #   3 4 7
 #  1 6 9 6
 # A soma mínima do caminho é 2 + 4 + 4 + 1 = 11, e o caminho é [2, 4, 4, 1].
+
+O problema é encontrar a menor soma em uma descida do ápice do triângulo até sua base por meio de uma sequência de números adjacentes (mostrados na figura pelos círculos). 
+
+Projete um algoritmo de programação dinâmica para este problema.
+"""
+
+# Precisamos encontrar o caminho de soma mínima do topo até a base do triângulo.
+# Só podemos descer para números adjacentes na linha abaixo.
+# Em cada nível i, um número na posição j pode descer para o número na posição j ou j+1 na linha i+1.
+# Então, basicamente, i = linha, j = coluna.
 # Para resolver isso, podemos usar programação dinâmica.
 
 # 1. Caracterizar a Sub-estrutura ótima:
@@ -118,7 +128,12 @@ def minimum_path_sum_with_path(triangle):
 
 
 # Exemplo de uso
-triangle = [[2], [5, 4], [3, 4, 7], [1, 6, 9, 6]]
+# fmt: off
+triangle = [[2], 
+            [5, 4], 
+            [3, 4, 7], 
+            [1, 6, 9, 6]]
+# fmt: on
 result = minimum_path_sum(triangle)
 
 print(f"A soma mínima do caminho é: {result}")
