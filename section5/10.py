@@ -136,4 +136,4 @@ caminho, max_dist = longest_path_dag(graph, start_vertex, end_vertex)
 print(
     f"Caminho máximo de {start_vertex} a {end_vertex}: {caminho}, Distância: {max_dist}"
 )
-# Saída esperada: Caminho máximo de 0 a 3: [0, 1, 3], Distância: 3
+# Saída esperada: Caminho máximo de 0 a 3: [0, 1, 3], Distância: 8
