@@ -15,15 +15,15 @@ Projete um algoritmo de programação dinâmica para este problema.
 """
 
 """ 
-função MinimumPathSumOtimizado(triangle):
+function MinimumPathSumOtimizado(triangle):
     n ← número de níveis do triângulo
     linha_atual ← array de tamanho n inicializado com infinito
     linha_anterior ← array de tamanho n inicializado com infinito
 
     linha_anterior[0] ← triangle[0][0]
 
-    Para i de 1 até n-1:
-        Para j de 0 até i:
+    for i ← 1 → n-1:
+        for j ← 0 → i:
             linha_atual[j] ← infinito
 
             // Verificar elemento à esquerda superior
@@ -39,7 +39,7 @@ função MinimumPathSumOtimizado(triangle):
 
     // Encontrar o mínimo na última linha
     resultado ← infinito
-    Para j de 0 até n-1:
+    for j ← 0 → n-1:
         resultado ← min(resultado, linha_anterior[j])
 
     Retornar resultado

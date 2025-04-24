@@ -60,7 +60,7 @@ def longest_common_substring(x, y):
 # Testando a função
 x = "zxyxyz"
 y = "xyyzx"
-print(longest_common_substring(x, y))  # Saída: 2 (a substring comum é "ab")
+print(longest_common_substring(x, y))  # Saída: 2 (a substring comum é "xyyz")
 
 """
 versão alternativa: (solução para substrings contínuas)
@@ -117,4 +117,4 @@ def longest_common_substring_alt(x, y):
 # Testando a função
 x = "zxyxyz"
 y = "xyyzx"
-print(longest_common_substring_alt(x, y))  # Saída: 2 (a substring comum é "ab")
+print(longest_common_substring_alt(x, y))  # Saída: 2 (a substring comum é "xy")

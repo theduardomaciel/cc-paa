@@ -33,9 +33,9 @@ Função objetivo:
 $$Minimizar \sum_{j \in V} C_j \cdot x_j$$
 
 Restrições:
-Para atender a lei, cada bairro $$j$$ deve ter pelo menos uma escola em sua vizinhança (incluindo ele mesmo):
+Para atender a lei, cada bairro $$i$$ deve ter pelo menos uma escola em sua vizinhança (incluindo ele mesmo):
 
-$$\sum_{i \in N[j]} x_i \geq 1$$ para todo $$j \in V$$
+$$\sum_{j \in N[i]} x_j \geq 1$$ para todo $$i \in V$$
 
 Isso garante que cada bairro $$j$$ tenha acesso a pelo menos uma escola, seja construindo uma escola nele mesmo ou em um de seus vizinhos.
 

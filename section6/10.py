@@ -22,6 +22,25 @@ https://en.wikipedia.org/wiki/Kakuro e modele exemplo dado utilizando Programaç
 #   - A função de restrição verifica se as somas das células preenchidas são iguais aos valores indicados nas células de soma.
 #   - A função também verifica se não há valores repetidos em uma mesma linha ou coluna.
 
+# Em termos matemáticos:
+# Utilizando programação por restrição, podemos modelar o exemplo do Kakuro da seguinte forma em termos matemáticos:
+#
+# 1. Variáveis de decisão:
+#    - Seja $$x_{i,j}$$ a variável que representa a célula na linha $$i$$ e coluna $$j$$.
+#    - $$x_{i,j} \in \{1, 2, 3, 4, 5, 6, 7, 8, 9\}$$ para todas as células brancas.
+#
+# 2. Restrições de soma:
+#    - Para cada pista horizontal $$h$$ que cobre as células $$x_{i,j_1}, x_{i,j_2}, \dots, x_{i,j_k}$$:
+#      $$ x_{i,j_1} + x_{i,j_2} + \dots + x_{i,j_k} = h$$
+#    - Para cada pista vertical $$v$$ que cobre as células $$x_{i_1,j}, x_{i_2,j}, \dots, x_{i_k,j}$$:
+#      $$ x_{i_1,j} + x_{i_2,j} + \dots + x_{i_k,j} = v$$
+#
+# 3. Restrições de unicidade:
+#    - Para cada pista horizontal $$h$$, as células $$x_{i,j_1}, x_{i,j_2}, \dots, x_{i,j_k}$$ devem ser distintas:
+#      $$x_{i,j_1} \neq x_{i,j_2} \neq \dots \neq x_{i,j_k}$$
+#    - Para cada pista vertical $$v$$, as células $$x_{i_1,j}, x_{i_2,j}, \dots, x_{i_k,j}$$ devem ser distintas:
+#      $$x_{i_1,j} \neq x_{i_2,j} \neq \dots \neq x_{i_k,j}$$
+
 from constraint import Problem, AllDifferentConstraint
 
 # 1) REPRESENTAÇÃO DO TABULEIRO

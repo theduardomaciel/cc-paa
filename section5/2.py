@@ -35,7 +35,7 @@ Elabore um algoritmo para encontrar o número máximo de moedas que o robô pode
 # Onde grid[i][j] é 1 se houver uma moeda na célula (i, j) e 0 caso contrário.
 
 """ 
-Função EncontrarCaminhoMáximoDeMoedas(tabuleiro[n][m]):
+function EncontrarCaminhoMáximoDeMoedas(tabuleiro[n][m]):
     // Inicializar matriz DP
     DP[n][m] = 0
 
@@ -46,22 +46,22 @@ Função EncontrarCaminhoMáximoDeMoedas(tabuleiro[n][m]):
     DP[0][0] = tabuleiro[0][0]
 
     // Preencher a primeira linha
-    Para j de 1 até m-1:
+    for j ← 1 → m-1:
         DP[0][j] = DP[0][j-1] + tabuleiro[0][j]
         caminho[0][j] = "direita"
 
     // Preencher a primeira coluna
-    Para i de 1 até n-1:
+    for i ← 1 → n-1:
         DP[i][0] = DP[i-1][0] + tabuleiro[i][0]
         caminho[i][0] = "baixo"
 
     // Preencher o resto da matriz
-    Para i de 1 até n-1:
-        Para j de 1 até m-1:
-            Se DP[i-1][j] > DP[i][j-1]:
+    for i ← 1 → n-1:
+        for j ← 1 → m-1:
+            if DP[i-1][j] > DP[i][j-1]:
                 DP[i][j] = DP[i-1][j] + tabuleiro[i][j]
                 caminho[i][j] = "baixo"
-            Senão:
+            else:
                 DP[i][j] = DP[i][j-1] + tabuleiro[i][j]
                 caminho[i][j] = "direita"
 
@@ -69,18 +69,16 @@ Função EncontrarCaminhoMáximoDeMoedas(tabuleiro[n][m]):
     resultado = []
     i = n-1, j = m-1
 
-    Enquanto i > 0 ou j > 0:
-        Se caminho[i][j] == "baixo":
+    while i > 0 ou j > 0:
+        if caminho[i][j] == "baixo":
             resultado.inserir_no_início("baixo")
             i = i-1
-        Senão:
+        else:
             resultado.inserir_no_início("direita")
             j = j-1
 
-    Retornar (DP[n-1][m-1], resultado)
+    return (DP[n-1][m-1], resultado)
 """
-
-import math
 
 
 def max_coins_path(grid):

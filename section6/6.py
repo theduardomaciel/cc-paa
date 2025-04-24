@@ -2,7 +2,8 @@
 QUESTÃO 6:
 Considere o seguinte problema de programação linear.
 max     5x + 3y
-s.a     5x + 2y ≥ 0
+s.a: (sujeito a)
+5x + 2y ≥ 0
 x + y ≤ 7
 x ≤ 5
 x ≥ 0
@@ -37,11 +38,18 @@ Restrição 1: 5x + 2y ≥ 0
 
 Restrição 2: x + y ≤ 7
 - Se x = 0, então y ≤ 7
-- Se y = 0, então x ≤ 7
-- A linha x + y = 7 passa pelos pontos (0,7) e (7,0)
+- Se y = 0, então x ≤ 7 (viola a restrição x ≤ 5)
+- A linha x + y = 7 passa pelo ponto (0, 7)
 
 Restrição 3: x ≤ 5
 - Isto é uma linha vertical em x = 5
+- Assim, temos o ponto (5, 0) na interseção com a restrição y = 0.
+
+Intersecção das restrições 2 e 3:
+- Para encontrar a interseção, substituímos x = 5 na segunda equação:
+  5 + y = 7
+  y = 2
+- Portanto, a interseção é o ponto (5, 2).
 
 Restrições 4 e 5: x ≥ 0, y ≥ 0
 - Estamos no primeiro quadrante do plano cartesiano
@@ -147,8 +155,8 @@ optimal_x = result.x
 optimal_value = -result.fun  # Negativo porque estamos maximizando
 
 # Adicionar texto com resultados da scipy
+# Resultado usando scipy.optimize.linprog
 optimal_text = (
-    f"Resultado usando scipy.optimize.linprog:\n"
     f"Solução ótima: x = {optimal_x[0]:.2f}, y = {optimal_x[1]:.2f}\n"
     f"Valor ótimo: {optimal_value:.2f}"
 )

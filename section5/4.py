@@ -27,15 +27,37 @@ função CaminhoMaisLongoDag(G):
 """
 
 
-# Função auxiliar para realizar a ordenação topológica
-# Basicamente, uma DFS (busca em profundidade) que
-# armazena os vértices na pilha após visitar todos os seus vizinhos
-def topological_sort_util(v, visited, stack):
-    visited[v] = True
-    for neighbor, _ in graph[v]:
-        if not visited[neighbor]:
-            topological_sort_util(neighbor, visited, stack)
-    stack.append(v)
+# Algoritmo:
+# - Visita todos os vértices em profundidade
+# - Quando um vértice termina (ou seja, não tem mais vizinhos a visitar), ele é adicionado ao fim de uma pilha
+# - A pilha é invertida para obter a ordem topológica
+# Ou seja, se estivéssemos usando uma lista, deveríamos inserir sempre no início
+def topological_sort(graph):
+    visited = set()
+    stack = []
+
+    # Função auxiliar para realizar DFS e preencher a pilha
+    # com a ordem topológica
+    def dfs(v):
+        visited.add(v)
+
+        # Visita todos os vizinhos do vértice v
+        # (vizinhos são representados como tuplas (vizinhos, peso))
+        for u, _ in graph[v]:
+            if u not in visited:
+                dfs(u)
+
+        # Adiciona o vértice v à pilha após visitar todos os vizinhos
+        stack.append(v)
+        print("Pilha:", stack)
+
+    # Loop para visitar todos os vértices do grafo
+    # (mesmo que o grafo não seja conectado)
+    for v in range(len(graph)):
+        if v not in visited:
+            dfs(v)
+
+    return stack[::-1]  # Retorna a ordem reversa
 
 
 # Função para calcular o comprimento do caminho mais longo em um DAG (grafo acíclico dirigido)
@@ -47,41 +69,39 @@ def dag_longest_path(graph):
     V = len(graph)
 
     # Passo 1: Realizar ordenação topológica
-    visited = [False] * V
-    stack = []
-
-    for i in range(V):
-        if not visited[i]:
-            topological_sort_util(i, visited, stack)
+    order = topological_sort(graph)
+    print("Ordem topológica:", order)
 
     # Passo 2: Inicializar array para armazenar comprimentos dos caminhos
-    distance = [float("-inf")] * V
-    distance[stack[-1]] = 0  # O comprimento do caminho para o último vértice é 0
+    distance = [0] * V  # Inicializa com 0 para todos os vértices
 
     # Passo 3: Processar vértices na ordem topológica
-    while stack:
-        u = stack.pop()
-        if distance[u] != float("-inf"):
-            for neighbor, weight in graph[u]:
-                if distance[neighbor] < distance[u] + weight:
-                    distance[neighbor] = distance[u] + weight
+    for u in order:
+        for neighbor, weight in graph[u]:
+            # Se a distância do vizinho for menor que a distância do vértice atual mais o peso da aresta
+            if distance[neighbor] < distance[u] + weight:
+                # Atualiza a distância do vizinho para o comprimento do caminho mais longo
+                # até o vértice atual mais o peso da aresta
+                distance[neighbor] = distance[u] + weight
 
     # Passo 4: Encontrar o valor máximo no array distance
     longest_path = max(distance)
-
-    return (
-        longest_path if longest_path != float("-inf") else 0
-    )  # Retorna 0 se não houver caminho
+    return longest_path
 
 
 # Exemplo de uso
 graph = [
     [(1, 3), (2, 6)],  # Vértice 0: arestas para 1 (peso 3) e 2 (peso 6)
     [(3, 2)],  # Vértice 1: aresta para 3 (peso 2)
-    [(3, 1)],  # Vértice 2: aresta para 3 (peso 1)
+    [(1, 4), (3, 1)],  # Vértice 2: arestas para 1 (peso 4) e 3 (peso 1)
     [],  # Vértice 3: sem arestas
 ]
 
 longest_path_length = dag_longest_path(graph)
 print("O comprimento do caminho mais longo no DAG é:", longest_path_length)
-# Saída esperada: O comprimento do caminho mais longo no DAG é: 8
+# Saída esperada: O comprimento do caminho mais longo no DAG é: 12
+# 0 -> 2 -> 1 -> 3 = 6 + 4 + 2 = 12
+# Outros caminhos são:
+# 0 -> 2 -> 3 = 6 + 1 = 7
+# 0 -> 1 -> 3 = 3 + 2 = 5
+# Portanto, o caminho mais longo é 12.

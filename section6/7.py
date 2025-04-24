@@ -255,8 +255,8 @@ optimal_x = result.x
 optimal_value = -result.fun  # Negativo porque estamos maximizando
 
 # Adicionar texto com resultados da scipy
+# Resultado usando scipy.optimize.linprog
 optimal_text = (
-    f"Resultado usando scipy.optimize.linprog:\n"
     f"Solução ótima: x = {optimal_x[0]:.2f}, y = {optimal_x[1]:.2f}\n"
     f"Valor ótimo: {optimal_value:.2f}"
 )

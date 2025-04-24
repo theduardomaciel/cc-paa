@@ -31,30 +31,30 @@ Projete um algoritmo de programação dinâmica para este problema.
 # dp[i][j] = min(dp[i-1][j], dp[i-1][j-1]) + triangle[i][j]
 
 """ 
-função MinimumPathSum(triangle):
+function MinimumPathSum(triangle):
     n ← número de níveis do triângulo
     dp ← matriz n × n inicializada com infinito
 
     dp[0][0] ← triangle[0][0]  // Ápice do triângulo
 
     # 3. Calcular o valor de uma solução ótima
-    Para i de 1 até n-1:
-        Para j de 0 até i:
+    for i ← 1 → n-1:
+        for j ← 0 → i:
             // Verificar elemento à esquerda superior (se existir)
-            se j > 0:
+            if j > 0:
                 dp[i][j] ← min(dp[i][j], dp[i-1][j-1] + triangle[i][j])
 
             // Verificar elemento à direita superior (se existir)
-            se j < i:
+            if j < i:
                 dp[i][j] ← min(dp[i][j], dp[i-1][j] + triangle[i][j])
 
     // 4. Construir uma solução ótima com as informações calculadas
     // A última linha contém os menores caminhos até a base do triângulo
     resultado ← infinito
-    Para j de 0 até n-1:
+    for j ← 0 → n-1:
         resultado ← min(resultado, dp[n-1][j])
 
-    Retornar resultado
+    return resultado
 """
 
 
